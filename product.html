@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parallax Scrolling Effect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+    <body>
+        <div id="app">
+            <header>
+                <div class="header">
+                    <!--                logo-->
+                    <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
+                    <nav>
+                        <!--              Sign in -->
+                        <form class="signInBtn" action="index.html" target="_self">
+                            <button class="btn">{{ signOut }}</button>
+                        </form>
+                        <!--                    ru & en icons-->
+                        <span id='en' class="language" v-on:click="changeLanguage($event)">
+                                <img src="https://codesford.com/static/website/img/icons/en.png" width="23" height="23" alt="en">
+                                  <span>en</span>
+                              </span>
+                        <span id='ru' class="language" v-on:click="changeLanguage($event)">
+                                <img src="https://codesford.com/static/website/img/icons/ru.png" width="23" height="23" alt="ru">
+                                  <span>ру</span>
+                              </span>
+                    </nav>
+                </div>
+            </header>
+
+            <main>
+                <img src="img/js.png" alt="js">
+                <div class="text">
+                    <p>{{ text1 }}</p>
+                    <p>{{ text2 }}</p>
+                </div>
+                <form action="payment.html" target="_self">
+                    <button class="formBtn btn">{{ payment }}</button>
+                </form>
+            </main>
+
+            <footer>
+                <!--                copyright symbol-->
+                <span>{{ copyright }}</span>
+                <!--                email-->
+                <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+            </footer>
+        </div>
+    <script>
+      // text in different languages
+      const block = {
+        ru: {
+          text1: 'Здесь вы можете изучить JavaScript, начиная с нуля и заканчивая продвинутыми концепциями вроде ООП.',
+          text2: 'Мы сосредоточимся на самом языке, изредка добавляя заметки о средах его исполнения.',
+          signOut: 'Выйти',
+          payment: 'Оплатить курс',
+        },
+        en: {
+          text1: 'Here we learn JavaScript, starting from scratch and go on to advanced concepts like OOP.',
+          text2: 'We concentrate on the language itself here, with the minimum of environment-specific notes.',
+          signOut: 'Sign out',
+          payment: 'Pay for the course',
+        }
+      }
+      // new Vue instance
+      const app = new Vue({
+        el: '#app',
+        data: {
+          email: 'email@codesford.com',
+          copyright: '© 2020 CodesFord',
+          text1: block.en.text1,
+          text2: block.en.text2,
+          signOut: block.en.signOut,
+          payment: block.en.payment,
+        },
+        methods: {
+          // a method for language change
+          changeLanguage: function (event) {
+            this.text1 = block[event.currentTarget.id].text1;
+            this.text2 = block[event.currentTarget.id].text2;
+            this.signOut = block[event.currentTarget.id].signOut;
+            this.payment = block[event.currentTarget.id].payment;
+          },
+        }
+      });
+    </script>
+    </body>
+</html>

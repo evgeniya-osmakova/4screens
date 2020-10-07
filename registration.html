@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Parallax Scrolling Effect</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="registration.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="app">
+            <header>
+                <div class="header">
+                    <!--                logo-->
+                    <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
+                    <nav>
+                        <!--              Sign in -->
+                        <form class="signInBtn" action="index.html" target="_self">
+                            <button class="btn">{{ signOut }}</button>
+                        </form>
+                        <!--                    ru & en icons-->
+                        <span id='en' class="language" v-on:click="changeLanguage($event)">
+                            <img src="https://codesford.com/static/website/img/icons/en.png" width="23" height="23" alt="en">
+                              <span>en</span>
+                        </span>
+                        <span id='ru' class="language" v-on:click="changeLanguage($event)">
+                            <img src="https://codesford.com/static/website/img/icons/ru.png" width="23" height="23" alt="ru">
+                            <span>ру</span>
+                        </span>
+                    </nav>
+                </div>
+            </header>
+
+            <main>
+                <form class="registrationForm" action="product.html" target="_self">
+                    <div class="registrationForm_fields">
+                        <label for="uname"><b>{{ username }}</b></label>
+                        <input id="uname" type="text" v-bind:placeholder="input+username" name="uname" required>
+
+                        <label for="psw"><b>{{ password }}</b></label>
+                        <input id="psw" type="password" v-bind:placeholder="input+password" name="psw" required>
+
+                        <button class="formBtn btn" type="submit">{{ login }}</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> {{ memorization }}
+                        </label>
+                    </div>
+                </form>
+            </main>
+
+            <footer>
+                <!--                copyright symbol-->
+                <span>{{ copyright }}</span>
+                <!--                email-->
+                <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+            </footer>
+        </div>
+    <script>
+      // text in different languages
+      const userData = {
+        ru: {
+          username: 'Имя пользователя',
+          password: 'Пароль',
+          login: 'Войти',
+          memorization: 'Запомнить меня',
+          input: 'Введите ',
+          signOut: 'Выйти',
+        },
+        en: {
+          username: 'Username',
+          password: 'Password',
+          login: 'Login',
+          memorization: 'Remember me',
+          input: 'Enter ',
+          signOut: 'Sign out',
+        },
+      }
+      // new Vue instance
+      const app = new Vue({
+        el: '#app',
+        data: {
+          email: 'email@codesford.com',
+          copyright: '© 2020 CodesFord',
+          username: userData.en.username,
+          password: userData.en.password,
+          login: userData.en.login,
+          memorization: userData.en.memorization,
+          input: userData.en.input,
+          signOut: userData.en.signOut,
+        },
+        methods: {
+          // a method for language change
+          changeLanguage: function (event) {
+            this.username = userData[event.currentTarget.id].username;
+            this.password = userData[event.currentTarget.id].password;
+            this.login = userData[event.currentTarget.id].login;
+            this.memorization = userData[event.currentTarget.id].memorization;
+            this.input = userData[event.currentTarget.id].input;
+            this.signOut = userData[event.currentTarget.id].signOut;
+          },
+        }
+      });
+    </script>
+    </body>
+</html>

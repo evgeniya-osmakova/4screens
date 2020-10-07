@@ -1,0 +1,29 @@
+#app {
+    margin: 0;
+     height: 100vh;
+     display: grid;
+     grid-template-areas: "header" "main" "footer";
+     grid-template-rows: 80px auto 50px;
+     overflow-x: hidden;
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer {
+    grid-area: footer;
+}
+
+.text {
+    color: white;
+}
+

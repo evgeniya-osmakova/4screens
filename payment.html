@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parallax Scrolling Effect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="payment.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+    <body>
+        <div id="app">
+            <header>
+                <div class="header">
+                    <!--                logo-->
+                    <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
+                    <nav>
+                        <!--              Sign in -->
+                        <form class="signInBtn" action="index.html" target="_self">
+                            <button class="btn">{{ signOut }}</button>
+                        </form>
+                        <!--                    ru & en icons-->
+                        <span id='en' class="language" v-on:click="changeLanguage($event)">
+                                <img src="https://codesford.com/static/website/img/icons/en.png" width="23" height="23" alt="en">
+                                  <span>en</span>
+                              </span>
+                        <span id='ru' class="language" v-on:click="changeLanguage($event)">
+                                <img src="https://codesford.com/static/website/img/icons/ru.png" width="23" height="23" alt="ru">
+                                  <span>ру</span>
+                              </span>
+                    </nav>
+                </div>
+            </header>
+
+            <main>
+                <div>
+                    <h1 class="text">
+                        {{ text }}
+                        {{ value }}
+                        {{ currency }}
+                    </h1>
+                </div>
+                <form class="registrationForm" method='POST' action='https://demo.paykeeper.ru/create/'>
+                    <div class="registrationForm_fields">
+                        <div hidden>
+                            <input type="text" v-bind:value='value' name="sum" hidden>
+                        </div>
+
+                        <label for="email"><b>{{ e_mail }}</b></label>
+                        <input id="email" type="text" v-bind:placeholder="e_mail" name="client_email" required>
+
+                        <label for="phone"><b>{{ phone }}</b></label>
+                        <input id="phone" type="text" v-bind:placeholder="phone" name="client_phone" required>
+
+                        <input class="btn" type='submit' v-bind:value='submit' />
+                    </div>
+                </form>
+            </main>
+
+            <footer>
+                <!--                copyright symbol-->
+                <span>{{ copyright }}</span>
+                <!--                email-->
+                <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+            </footer>
+        </div>
+        <script>
+          // text in different languages
+          const textData = {
+            ru: {
+              e_mail: 'Введите e-mail:',
+              phone: 'Введите номер телефона:',
+              submit: 'Перейти к оплате',
+              signOut: 'Выйти',
+              text: 'Сумма к оплате',
+              value: '10000 ',
+              currency: 'рублей',
+            },
+            en: {
+              e_mail: 'Enter e-mail:',
+              phone: 'Enter phone number:',
+              submit: 'Proceed to checkout',
+              signOut: 'Sign out',
+              text: 'You need to pay',
+              value: '150 ',
+              currency: '$',
+            },
+          }
+          // new Vue instance
+          const app = new Vue({
+            el: '#app',
+            data: {
+              email: 'email@codesford.com',
+              copyright: '© 2020 CodesFord',
+              e_mail: textData.en.e_mail,
+              phone: textData.en.phone,
+              submit: textData.en.submit,
+              signOut: textData.en.signOut,
+              text: textData.en.text,
+              value: textData.en.value,
+              currency: textData.en.currency,
+            },
+            methods: {
+              // a method for language change
+              changeLanguage: function (event) {
+                this.e_mail = textData[event.currentTarget.id].e_mail;
+                this.phone = textData[event.currentTarget.id].phone;
+                this.submit = textData[event.currentTarget.id].submit;
+                this.signOut = textData[event.currentTarget.id].signOut;
+                this.text = textData[event.currentTarget.id].text;
+                this.value = textData[event.currentTarget.id].value;
+                this.currency = textData[event.currentTarget.id].currency;
+              },
+            }
+          });
+        </script>
+    </body>
+</html>

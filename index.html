@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>Parallax Scrolling Effect</title>
+          <link rel="stylesheet" href="style.css">
+          <link rel="stylesheet" href="index.css">
+          <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="header">
+          <!--                logo-->
+          <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
+            <nav>
+<!--              Sign in -->
+              <form class="signInBtn" action="registration.html" target="_self">
+                <button class="btn">{{ signIn }}</button>
+              </form>
+              <!--                    ru & en icons-->
+              <span id='en' class="language" v-on:click="changeLanguage($event)">
+                <img src="https://codesford.com/static/website/img/icons/en.png" width="23" height="23" alt="en">
+                  <span>en</span>
+              </span>
+              <span id='ru' class="language" v-on:click="changeLanguage($event)">
+                <img src="https://codesford.com/static/website/img/icons/ru.png" width="23" height="23" alt="ru">
+                  <span>ру</span>
+              </span>
+            </nav>
+        </div>
+      </header>
+
+      <main>
+        <!--            parallax-->
+        <section class="parallax">
+          <h1 class="big-title translate" data-speed="0.1">CodesFord</h1>
+          <img src="img/5.jpg" class="photo translate" data-speed="0.5" alt="">
+        </section>
+        <div class="container">
+          <div class="content">
+            <h3 class="title">{{ title1 }}</h3>
+            <div class="text">{{ text1 }}</div>
+          </div>
+
+          <div class="imgContainer">
+            <img src="img/man.png" alt="">
+          </div>
+        </div>
+        <div class="container">
+          <div class="imgContainer">
+            <img src="img/man2.png" alt="">
+          </div>
+
+          <div class="content ">
+            <h3 class="title">{{ title2 }}</h3>
+            <p class="text">{{ text2 }}</p>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <!--                copyright symbol-->
+        <span>{{ copyright }}</span>
+        <!--                email-->
+        <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+      </footer>
+    </div>
+    <script>
+      // text in different languages
+      const block1 = {
+          ru: {
+              title: 'Почему нужно выбрать нас',
+              text: 'Наша команда отлично понимает, что у нас есть конкуренты. Существуют другие сайты, где можно изучать программирование. Но нигде нельзя назначать свою цену за обучение. Появляется много ИТ-энтузиастов, которые хотели бы начать обучение, требуя свою цену. В это же время также существует много опытных разработчиков и преподавателей, которые хотели бы заработать дополнительные деньги, но не знают, сколько может стоить их курс ИТ-разработки. Наш маркетплейс позволяет студентам назначать желаемую цену за учебу на курсах программирования',
+        },
+          en: {
+              title: 'The Reasons to choose Our Expert Services',
+              text: 'Our team understands that we have competitors. There are other sites where you can study programming. But there you cannot ask for your tuition price. They tell you the price. There are many IT enthusiasts who would like to start some IT trainings, demanding their price. At the same time, there are also many experienced developers and teachers who would like to earn extra money, but do not know how much their IT development course can cost. Our marketplace helps junior developers to set the desired price for studying in programming courses',
+        }
+      }
+      const block2 = {
+          ru: {
+              title: 'Учитесь в любом месте',
+              text: 'Если вам не принципиально, что здание, в котором вы учитесь, не похоже на Хогвартс, и если вы не хотите на годы уезжать от родных и друзей, то вы можете обучаться из дома или из любого места, где есть интернет и ваше устройство для выхода в интернет, например, ноутбук или смартфон. Вам не придётся тратить десятки или даже сотни тысяч долларов на обучение.'
+            },
+          en: {
+              title: 'Where you can use our service',
+              text: 'If it doesn’t matter to you that the building in which you study is not like Hogwarts, and if you do not want to leave your relatives and friends for years, then you can study from home or from any place where there is Internet and your device with Internet (laptop or smartphone). You do not have to spend tens or even hundreds of thousands of dollars to study at the university.'
+          },
+      };
+      const pageData = {
+        ru: 'Вход',
+        en: 'Sign in',
+      }
+      // new Vue instance
+      const app = new Vue({
+        el: '#app',
+        data: {
+          email: 'email@codesford.com',
+          copyright: '© 2020 CodesFord',
+          title1: block1.en.title,
+          title2: block2.en.title,
+          text1: block1.en.text,
+          text2: block2.en.text,
+          signIn: pageData.en,
+        },
+        methods: {
+          // a method for language change
+          changeLanguage: function (event) {
+            this.text1 = block1[event.currentTarget.id].text;
+            this.text2 = block2[event.currentTarget.id].text;
+            this.title1 = block1[event.currentTarget.id].title;
+            this.title2 = block1[event.currentTarget.id].title;
+            this.signIn = pageData[event.currentTarget.id];
+          },
+        }
+      });
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>

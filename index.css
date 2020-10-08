@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'University Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('University Regular'), url('fonts/University.woff') format('woff');
+}
+
 .container{
     max-width: 70rem;
     padding: 0 2rem;
@@ -30,6 +37,7 @@
 }
 
 .big-title{
+    font-family: 'University Regular';
     position: absolute;
     z-index: 30;
     line-height: 4rem;

@@ -16,10 +16,14 @@
           <!--                logo-->
           <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
             <nav>
-<!--              Sign in -->
-              <form class="signInBtn" action="registration.html" target="_self">
-                <button class="btn">{{ signIn }}</button>
+                <!--              Help -->
+              <form class="signInBtn" action="help.html" target="_self">
+                <button class="btn">{{ help }}</button>
               </form>
+                <!--              Sign in -->
+                <form class="signInBtn" action="registration.html" target="_self">
+                    <button class="btn">{{ signIn }}</button>
+                </form>
               <!--                    ru & en icons-->
               <span id='en' class="language" v-on:click="changeLanguage($event)">
                 <img src="https://codesford.com/static/website/img/icons/en.png" width="23" height="23" alt="en">
@@ -37,7 +41,7 @@
         <!--            parallax-->
         <section class="parallax">
           <h1 class="big-title translate" data-speed="0.1">CodesFord</h1>
-          <img src="img/5.jpg" class="photo translate" data-speed="0.5" alt="">
+          <img src="img/main.jpg" class="photo translate" data-speed="0.5" alt="">
         </section>
         <div class="container">
           <div class="content">
@@ -91,8 +95,14 @@
           },
       };
       const pageData = {
-        ru: 'Вход',
-        en: 'Sign in',
+        ru: {
+          signIn: 'Вход',
+          help: 'Помощь',
+        },
+        en: {
+          signIn: 'Sign in',
+          help: 'Help',
+        }
       }
       // new Vue instance
       const app = new Vue({
@@ -104,7 +114,8 @@
           title2: block2.en.title,
           text1: block1.en.text,
           text2: block2.en.text,
-          signIn: pageData.en,
+          signIn: pageData.en.signIn,
+          help: pageData.en.help,
         },
         methods: {
           // a method for language change
@@ -113,7 +124,8 @@
             this.text2 = block2[event.currentTarget.id].text;
             this.title1 = block1[event.currentTarget.id].title;
             this.title2 = block1[event.currentTarget.id].title;
-            this.signIn = pageData[event.currentTarget.id];
+            this.signIn = pageData[event.currentTarget.id].signIn;
+            this.help = pageData[event.currentTarget.id].help;
           },
         }
       });

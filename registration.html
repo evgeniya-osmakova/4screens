@@ -16,6 +16,10 @@
                     <!--                logo-->
                     <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
                     <nav>
+                        <!--              Help -->
+                        <form class="signInBtn" action="help.html" target="_self">
+                            <button class="btn">{{ help }}</button>
+                        </form>
                         <!--              Sign in -->
                         <form class="signInBtn" action="index.html" target="_self">
                             <button class="btn">{{ signOut }}</button>
@@ -67,6 +71,7 @@
           memorization: 'Запомнить меня',
           input: 'Введите ',
           signOut: 'Выйти',
+          help: 'Помощь',
         },
         en: {
           username: 'Username',
@@ -75,6 +80,7 @@
           memorization: 'Remember me',
           input: 'Enter ',
           signOut: 'Sign out',
+          help: 'Help',
         },
       }
       // new Vue instance
@@ -89,6 +95,7 @@
           memorization: userData.en.memorization,
           input: userData.en.input,
           signOut: userData.en.signOut,
+          help: userData.en.help,
         },
         methods: {
           // a method for language change
@@ -99,6 +106,7 @@
             this.memorization = userData[event.currentTarget.id].memorization;
             this.input = userData[event.currentTarget.id].input;
             this.signOut = userData[event.currentTarget.id].signOut;
+            this.help = userData[event.currentTarget.id].help;
           },
         }
       });

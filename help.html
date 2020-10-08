@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Parallax Scrolling Effect</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="help.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="header">
+          <!--                logo-->
+          <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
+          <nav>
+            <!--              Sign in -->
+            <form class="signInBtn" action="index.html" target="_self">
+              <button class="btn">{{ signIn }}</button>
+            </form>
+            <!--                    ru & en icons-->
+            <span id='en' class="language" v-on:click="changeLanguage($event)">
+                                    <img src="https://codesford.com/static/website/img/icons/en.png" width="23" height="23" alt="en">
+                                      <span>en</span>
+                                  </span>
+            <span id='ru' class="language" v-on:click="changeLanguage($event)">
+                                    <img src="https://codesford.com/static/website/img/icons/ru.png" width="23" height="23" alt="ru">
+                                      <span>ру</span>
+                                  </span>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <div class="faq">
+          <a href="#" class="card">
+            <div class="card__img">
+              <img src="img/start.png" alt="">
+            </div>
+            <div class="card__header">{{ startHeader }}</div>
+            <div class="card__description">{{ startDescription }}</div>
+          </a>
+          <a href="#" class="card">
+            <div class="card__img">
+              <img src="img/avatar.png" alt="">
+            </div>
+            <div class="card__header">{{ accHeader }}</div>
+            <div class="card__description">{{ accDescription }}</div>
+          </a>
+          <a href="#" class="card">
+            <div class="card__img">
+              <img src="img/courses.png" alt="">
+            </div>
+            <div class="card__header">{{ courseHeader }}</div>
+            <div class="card__description">{{ courseDescription }}</div>
+          </a>
+          <a href="#" class="card">
+            <div class="card__img">
+              <img src="img/pay.png" alt="">
+            </div>
+            <div class="card__header">{{ payHeader }}</div>
+            <div class="card__description">{{ payDescription }}</div>
+          </a>
+        </div>
+        <div class="helpForm">
+          <div class="helpForm__header">
+            {{ question }}
+          </div>
+          <form class="helpForm__btn" action="feedback.html" target="_self">
+            <button class="formBtn btn">{{ help }}</button>
+          </form>
+        </div>
+
+      </main>
+
+      <footer>
+        <!--                copyright symbol-->
+        <span>{{ copyright }}</span>
+        <!--                email-->
+        <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+      </footer>
+    </div>
+  <script>
+    const textData = {
+      en: {
+        start: {
+          header: 'Getting Started',
+          description: 'Learn how CodesFord works and how to start learning.',
+        },
+        acc: {
+          header: 'Account',
+          description: 'Manage your account settings.',
+        },
+        course: {
+          header: 'Courses',
+          description: 'Everything about taking a course on CodesFord.',
+        },
+        pay: {
+          header: 'Purchase/Refunds',
+          description: 'Learn about payment, how to send gifts, and refunds.',
+        },
+      },
+      ru: {
+        start: {
+          header: 'С чего начать',
+          description: 'Узнай как устроен CodesFord и начни обучение',
+        },
+        acc: {
+          header: 'Мой аккаунт',
+          description: 'Управляй настройками своего аккаунта',
+        },
+        course: {
+          header: 'Процесс обучения',
+          description: 'Всё о курсах, представленных на CodesFord',
+        },
+        pay: {
+          header: 'Оплата',
+          description: 'Подписка, покупка подарков и всё, что связано с платным доступом'
+        },
+      }
+    }
+
+    const pageData = {
+      ru: {
+        signIn: 'Вход',
+        help: 'Написать в службу поддержки',
+        question: 'Не нашли ответ на свой вопрос?',
+      },
+      en: {
+        signIn: 'Sign in',
+        help: 'Write to the support service',
+        question: 'Did not find the answer?',
+      }
+    }
+    // new Vue instance
+    const app = new Vue({
+      el: '#app',
+      data: {
+        email: 'email@codesford.com',
+        copyright: '© 2020 CodesFord',
+        signIn: pageData.en.signIn,
+        help: pageData.en.help,
+        question: pageData.en.question,
+        startHeader: textData.en.start.header,
+        startDescription: textData.en.start.description,
+        accHeader: textData.en.acc.header,
+        accDescription: textData.en.acc.description,
+        courseHeader: textData.en.course.header,
+        courseDescription: textData.en.course.description,
+        payHeader: textData.en.pay.header,
+        payDescription: textData.en.pay.description,
+      },
+      methods: {
+        // a method for language change
+        changeLanguage: function (event) {
+          this.signIn = pageData[event.currentTarget.id].signIn;
+          this.help = pageData[event.currentTarget.id].help;
+          this.question = pageData[event.currentTarget.id].question;
+          this.startHeader = textData[event.currentTarget.id].start.header;
+          this.startDescription = textData[event.currentTarget.id].start.description;
+          this.accHeader = textData[event.currentTarget.id].acc.header;
+          this.accDescription = textData[event.currentTarget.id].acc.description;
+          this.courseHeader = textData[event.currentTarget.id].course.header;
+          this.courseDescription = textData[event.currentTarget.id].course.description;
+          this.payHeader = textData[event.currentTarget.id].pay.header;
+          this.payDescription = textData[event.currentTarget.id].pay.description;
+        },
+      }
+    });
+  </script>
+  </body>
+</html>
+

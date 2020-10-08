@@ -16,6 +16,10 @@
                     <!--                logo-->
                     <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
                     <nav>
+                        <!--              Help -->
+                        <form class="signInBtn" action="help.html" target="_self">
+                            <button class="btn">{{ help }}</button>
+                        </form>
                         <!--              Sign in -->
                         <form class="signInBtn" action="index.html" target="_self">
                             <button class="btn">{{ signOut }}</button>
@@ -76,6 +80,7 @@
               text: 'Сумма к оплате',
               value: '10000 ',
               currency: 'рублей',
+              help: 'Помощь',
             },
             en: {
               e_mail: 'Enter e-mail:',
@@ -85,6 +90,7 @@
               text: 'You need to pay',
               value: '150 ',
               currency: '$',
+              help: 'Help',
             },
           }
           // new Vue instance
@@ -100,6 +106,7 @@
               text: textData.en.text,
               value: textData.en.value,
               currency: textData.en.currency,
+              help: textData.en.help,
             },
             methods: {
               // a method for language change
@@ -111,6 +118,7 @@
                 this.text = textData[event.currentTarget.id].text;
                 this.value = textData[event.currentTarget.id].value;
                 this.currency = textData[event.currentTarget.id].currency;
+                this.help = textData[event.currentTarget.id].help;
               },
             }
           });

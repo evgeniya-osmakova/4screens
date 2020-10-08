@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parallax Scrolling Effect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="feedback.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="header">
+            <!--                logo-->
+            <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
+            <nav>
+                <!--              Help -->
+                <form class="signInBtn" action="help.html" target="_self">
+                    <button class="btn">{{ help }}</button>
+                </form>
+                <!--              Sign in -->
+                <form class="signInBtn" action="index.html" target="_self">
+                    <button class="btn">{{ signOut }}</button>
+                </form>
+                <!--                    ru & en icons-->
+                <span id='en' class="language" v-on:click="changeLanguage($event)">
+                            <img src="https://codesford.com/static/website/img/icons/en.png" width="23" height="23" alt="en">
+                              <span>en</span>
+                        </span>
+                <span id='ru' class="language" v-on:click="changeLanguage($event)">
+                            <img src="https://codesford.com/static/website/img/icons/ru.png" width="23" height="23" alt="ru">
+                            <span>ру</span>
+                        </span>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="formHeader">{{ formHeader }}</h1>
+        <form class="registrationForm" action="success.html" target="_self">
+            <div class="registrationForm_fields">
+                <p class="note"><span class="req">*</span>{{ required }}</p>
+                <br>
+                <label for="uname"><b>{{ username }} <span class="req">*</span></b></label>
+                <input id="uname" type="text" v-bind:placeholder="input+username" name="uname" required>
+
+                <label for="psw"><b>{{ e_mail }} <span class="req">*</span></b></label>
+                <input id="psw" type="text" v-bind:placeholder="input+'e-mail'" name="psw" required>
+
+                <label for="question"><b>{{ question }} <span class="req">*</span></b></label>
+                <textarea id="question"  name="question" required> </textarea>
+
+                <button class="formBtn btn" type="submit">{{ submit }}</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <!--                copyright symbol-->
+        <span>{{ copyright }}</span>
+        <!--                email-->
+        <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+    </footer>
+</div>
+<script>
+  // text in different languages
+  const userData = {
+    ru: {
+      username: 'ваше имя',
+      e_mail: 'ваш e-mail',
+      submit: 'Отправить',
+      input: 'Введите ',
+      signOut: 'Выйти',
+      help: 'Помощь',
+      question: 'текст обращения',
+      required: ' Поля со звездочкой обязательны для заполнения',
+      formHeader: 'Заполните форму обратной связи',
+      sent: 'Сообщение отправлено, ожидайте ответа в течении 24 часов!'
+    },
+    en: {
+      username: 'your name',
+      e_mail: 'your e-mail',
+      submit: 'Send',
+      input: 'Enter ',
+      signOut: 'Sign out',
+      help: 'Help',
+      question: 'message text',
+      required: ' Fields with an asterisk are required',
+      formHeader: 'Fill out the feedback form',
+      sent: 'Message sent, expect a response within 24 hours',
+    },
+  }
+  // new Vue instance
+  const app = new Vue({
+    el: '#app',
+    data: {
+      email: 'email@codesford.com',
+      copyright: '© 2020 CodesFord',
+      username: userData.en.username,
+      e_mail: userData.en.e_mail,
+      submit: userData.en.submit,
+      input: userData.en.input,
+      signOut: userData.en.signOut,
+      help: userData.en.help,
+      question: userData.en.question,
+      required: userData.en.required,
+      formHeader: userData.en.formHeader,
+      sent: userData.en.sent,
+    },
+    methods: {
+      // a method for language change
+      changeLanguage: function (event) {
+        this.username = userData[event.currentTarget.id].username;
+        this.e_mail = userData[event.currentTarget.id].e_mail;
+        this.submit = userData[event.currentTarget.id].submit;
+        this.input = userData[event.currentTarget.id].input;
+        this.signOut = userData[event.currentTarget.id].signOut;
+        this.help = userData[event.currentTarget.id].help;
+        this.question = userData[event.currentTarget.id].question;
+        this.required = userData[event.currentTarget.id].required;
+        this.formHeader = userData[event.currentTarget.id].formHeader;
+        this.sent = userData[event.currentTarget.id].sent;
+      },
+    }
+  });
+</script>
+</body>
+</html>

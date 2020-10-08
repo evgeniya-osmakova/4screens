@@ -16,6 +16,10 @@
                     <!--                logo-->
                     <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
                     <nav>
+                        <!--              Help -->
+                        <form class="signInBtn" action="help.html" target="_self">
+                            <button class="btn">{{ help }}</button>
+                        </form>
                         <!--              Sign in -->
                         <form class="signInBtn" action="index.html" target="_self">
                             <button class="btn">{{ signOut }}</button>
@@ -59,12 +63,14 @@
           text2: 'Мы сосредоточимся на самом языке, изредка добавляя заметки о средах его исполнения.',
           signOut: 'Выйти',
           payment: 'Оплатить курс',
+          help: 'Помощь',
         },
         en: {
           text1: 'Here we learn JavaScript, starting from scratch and go on to advanced concepts like OOP.',
           text2: 'We concentrate on the language itself here, with the minimum of environment-specific notes.',
           signOut: 'Sign out',
           payment: 'Pay for the course',
+          help: 'Help',
         }
       }
       // new Vue instance
@@ -77,6 +83,7 @@
           text2: block.en.text2,
           signOut: block.en.signOut,
           payment: block.en.payment,
+          help: block.en.help,
         },
         methods: {
           // a method for language change
@@ -85,6 +92,7 @@
             this.text2 = block[event.currentTarget.id].text2;
             this.signOut = block[event.currentTarget.id].signOut;
             this.payment = block[event.currentTarget.id].payment;
+            this.help = block[event.currentTarget.id].help;
           },
         }
       });

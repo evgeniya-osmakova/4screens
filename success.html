@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parallax Scrolling Effect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="success.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="header">
+            <!--                logo-->
+            <img src="https://codesford.com/static/website/img/logo.svg" height="45" alt="logo">
+            <nav>
+                <!--              Help -->
+                <form class="signInBtn" action="help.html" target="_self">
+                    <button class="btn">{{ help }}</button>
+                </form>
+                <!--              Sign in -->
+                <form class="signInBtn" action="index.html" target="_self">
+                    <button class="btn">{{ signOut }}</button>
+                </form>
+                <!--                    ru & en icons-->
+                <span id='en' class="language" v-on:click="changeLanguage($event)">
+                            <img src="https://codesford.com/static/website/img/icons/en.png" width="23" height="23" alt="en">
+                              <span>en</span>
+                        </span>
+                <span id='ru' class="language" v-on:click="changeLanguage($event)">
+                            <img src="https://codesford.com/static/website/img/icons/ru.png" width="23" height="23" alt="ru">
+                            <span>ру</span>
+                        </span>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="title">{{ title }}</h1>
+        <form class="signInBtn" action="index.html" target="_self">
+            <button class="btn">{{ back }}</button>
+        </form>
+    </main>
+
+    <footer>
+        <!--                copyright symbol-->
+        <span>{{ copyright }}</span>
+        <!--                email-->
+        <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+    </footer>
+</div>
+<script>
+  // text in different languages
+  const userData = {
+    ru: {
+      signOut: 'Выйти',
+      help: 'Помощь',
+      title: 'Сообщение отправлено, ожидайте ответа в течении 24 часов!',
+      back: 'На главную страницу',
+    },
+    en: {
+      signOut: 'Sign out',
+      help: 'Help',
+      title: 'Message sent, expect a response within 24 hours',
+      back: 'Back to Home Page',
+    },
+  }
+  // new Vue instance
+  const app = new Vue({
+    el: '#app',
+    data: {
+      email: 'email@codesford.com',
+      copyright: '© 2020 CodesFord',
+      signOut: userData.en.signOut,
+      help: userData.en.help,
+      title: userData.en.title,
+      back: userData.en.back,
+    },
+    methods: {
+      // a method for language change
+      changeLanguage: function (event) {
+        this.signOut = userData[event.currentTarget.id].signOut;
+        this.help = userData[event.currentTarget.id].help;
+        this.title = userData[event.currentTarget.id].title;
+        this.back = userData[event.currentTarget.id].back;
+      },
+    }
+  });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,83 @@
+#app {
+    margin: 0;
+     height: 100vh;
+     display: grid;
+     grid-template-areas: "header" "main" "footer";
+     grid-template-rows: 80px auto 50px;
+     overflow-x: hidden;
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer {
+    grid-area: footer;
+}
+
+.faq {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 white;
+  border: 2px solid #d3d3d3;
+  background-color: white;
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+  width: 300px;
+  display: grid;
+  grid-template-areas: "img" "header" "description";
+  grid-template-rows: 40% 10% 40%;
+}
+
+.card:hover {
+  border-width: 2px;
+  border-color: gray;
+  cursor: pointer;
+}
+
+.card__img {
+    grid-area: img;
+    height: 55px;
+    background-clip: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__img img {
+    height: 55px;
+}
+
+.card__header {
+    grid-area: header;
+    font-size: 24px;
+}
+
+.card__description {
+    grid-area: description;
+    display: flex;
+    justify-content: center;
+}
+
+.helpForm__header {
+    color: white;
+    font-size: 20px;
+}
+
+.formBtn {
+    font-size: 16px;
+}

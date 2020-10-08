@@ -1,0 +1,60 @@
+#app {
+    margin: 0;
+     height: 100vh;
+     display: grid;
+     grid-template-areas: "header" "main" "footer";
+     grid-template-rows: 80px auto 50px;
+     overflow-x: hidden;
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer {
+    grid-area: footer;
+}
+
+.registrationForm {
+    margin: 50px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.registrationForm_fields {
+  padding: 16px;
+  background-color: white;
+}
+
+.text, .formHeader{
+    color: white;
+}
+
+.req {
+    color: #ca5354;
+}
+
+#question {
+    height: 150px;
+    width: 500px;
+}
+

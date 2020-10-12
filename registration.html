@@ -7,6 +7,7 @@
         <title>Parallax Scrolling Effect</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="registration.css">
+        <link rel="stylesheet" href="footer.css">
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <link rel="manifest" href="manifest.webmanifest">
     </head>
@@ -56,15 +57,42 @@
             </main>
 
             <footer>
-                <!--                copyright symbol-->
-                <span>{{ copyright }}</span>
-                <!--                email-->
-                <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+                <div class="footer_top">
+                    <div class="address">
+                        <div>{{ address }}</div>
+                        <div>{{ addressDetail}}</div>
+                    </div>
+                    <div>
+                        <a href="#">{{ main }}</a>
+                    </div>
+                    <div>
+                        <a href="#">{{ study }}</a>
+                    </div>
+                    <div>
+                        <a href="#">{{ team }}</a>
+                    </div>
+                    <div class="socialNetworks">
+                        <div>{{ socialNetworks }}</div>
+                        <div class="socialNetworks__imgs">
+                            <a href="https://www.youtube.com/channel/UCAJdCHneL0v4Ad38UVaCjbg"><img class="socialNetworks__imgs__item" src="img/youtube.svg" alt="youtube"></a>
+                            <a href="https://vk.com/codesford"><img class="socialNetworks__imgs__item" src="img/vk.svg" alt="vk"></a>
+                            <a href="https://t.me/CodesFord"><img class="socialNetworks__imgs__item"src="img/facebook1.svg" alt="facebook"></a>
+                            <a href="https://www.facebook.com/CodesFord2020"><img class="socialNetworks__imgs__item" src="img/telegram.svg" alt="telegram"></a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="footer_bottom">
+                    <!--                copyright symbol-->
+                    <div>{{ copyright }}</div>
+                    <!--                email-->
+                    <div><a href="mailto:email@codesford.com">{{ email }}</a></div>
+                </div>
             </footer>
         </div>
     <script>
       // text in different languages
-      const userData = {
+      const textData = {
         ru: {
           username: 'Имя пользователя',
           password: 'Пароль',
@@ -73,6 +101,12 @@
           input: 'Введите ',
           signOut: 'Выйти',
           help: 'Помощь',
+          address: 'Адрес',
+          addressDetail: '3047, ‌Австралия, ‌Мельбурн, ‌Броадмидоус, Персидэйл‌ ‌Пэрэйд, д.59, ‌офис 69',
+          main: 'Главная',
+          study: 'Учиться',
+          team: 'Команда',
+          socialNetworks: 'Присоединяйся к нам в социальных сетях',
         },
         en: {
           username: 'Username',
@@ -82,6 +116,12 @@
           input: 'Enter ',
           signOut: 'Sign out',
           help: 'Help',
+          address: 'Address',
+          addressDetail: '59-69 Pearcedale Parade Broadmeadows VIC 3047',
+          main: 'Main',
+          study: 'Study',
+          team: 'Team',
+          socialNetworks: 'Join us on social networks',
         },
       }
       // new Vue instance
@@ -90,24 +130,36 @@
         data: {
           email: 'email@codesford.com',
           copyright: '© 2020 CodesFord',
-          username: userData.en.username,
-          password: userData.en.password,
-          login: userData.en.login,
-          memorization: userData.en.memorization,
-          input: userData.en.input,
-          signOut: userData.en.signOut,
-          help: userData.en.help,
+          username: textData.en.username,
+          password: textData.en.password,
+          login: textData.en.login,
+          memorization: textData.en.memorization,
+          input: textData.en.input,
+          signOut: textData.en.signOut,
+          help: textData.en.help,
+          address: textData.en.address,
+          addressDetail: textData.en.addressDetail,
+          main: textData.en.main,
+          study: textData.en.study,
+          team: textData.en.team,
+          socialNetworks: textData.en.socialNetworks,
         },
         methods: {
           // a method for language change
           changeLanguage: function (event) {
-            this.username = userData[event.currentTarget.id].username;
-            this.password = userData[event.currentTarget.id].password;
-            this.login = userData[event.currentTarget.id].login;
-            this.memorization = userData[event.currentTarget.id].memorization;
-            this.input = userData[event.currentTarget.id].input;
-            this.signOut = userData[event.currentTarget.id].signOut;
-            this.help = userData[event.currentTarget.id].help;
+            this.username = textData[event.currentTarget.id].username;
+            this.password = textData[event.currentTarget.id].password;
+            this.login = textData[event.currentTarget.id].login;
+            this.memorization = textData[event.currentTarget.id].memorization;
+            this.input = textData[event.currentTarget.id].input;
+            this.signOut = textData[event.currentTarget.id].signOut;
+            this.help = textData[event.currentTarget.id].help;
+            this.address = textData[event.currentTarget.id].address;
+            this.addressDetail = textData[event.currentTarget.id].addressDetail;
+            this.main = textData[event.currentTarget.id].main;
+            this.study = textData[event.currentTarget.id].study;
+            this.team = textData[event.currentTarget.id].team;
+            this.socialNetworks = textData[event.currentTarget.id].socialNetworks;
           },
         }
       });

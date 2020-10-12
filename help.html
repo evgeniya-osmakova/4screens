@@ -7,6 +7,7 @@
   <title>Parallax Scrolling Effect</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="help.css">
+  <link rel="stylesheet" href="footer.css">
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <link rel="manifest" href="manifest.webmanifest">
 </head>
@@ -77,10 +78,37 @@
       </main>
 
       <footer>
-        <!--                copyright symbol-->
-        <span>{{ copyright }}</span>
-        <!--                email-->
-        <span><a href="mailto:email@codesford.com">{{ email }}</a></span>
+        <div class="footer_top">
+          <div class="address">
+            <div>{{ address }}</div>
+            <div>{{ addressDetail}}</div>
+          </div>
+          <div>
+            <a href="#">{{ main }}</a>
+          </div>
+          <div>
+            <a href="#">{{ study }}</a>
+          </div>
+          <div>
+            <a href="#">{{ team }}</a>
+          </div>
+          <div class="socialNetworks">
+            <div>{{ socialNetworks }}</div>
+            <div class="socialNetworks__imgs">
+              <a href="https://www.youtube.com/channel/UCAJdCHneL0v4Ad38UVaCjbg"><img class="socialNetworks__imgs__item" src="img/youtube.svg" alt="youtube"></a>
+              <a href="https://vk.com/codesford"><img class="socialNetworks__imgs__item" src="img/vk.svg" alt="vk"></a>
+              <a href="https://t.me/CodesFord"><img class="socialNetworks__imgs__item"src="img/facebook1.svg" alt="facebook"></a>
+              <a href="https://www.facebook.com/CodesFord2020"><img class="socialNetworks__imgs__item" src="img/telegram.svg" alt="telegram"></a>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="footer_bottom">
+          <!--                copyright symbol-->
+          <div>{{ copyright }}</div>
+          <!--                email-->
+          <div><a href="mailto:email@codesford.com">{{ email }}</a></div>
+        </div>
       </footer>
     </div>
   <script>
@@ -128,11 +156,23 @@
         signIn: 'Вход',
         help: 'Написать в службу поддержки',
         question: 'Не нашли ответ на свой вопрос?',
+        address: 'Адрес',
+        addressDetail: '3047, ‌Австралия, ‌Мельбурн, ‌Броадмидоус, Персидэйл‌ ‌Пэрэйд, д.59, ‌офис 69',
+        main: 'Главная',
+        study: 'Учиться',
+        team: 'Команда',
+        socialNetworks: 'Присоединяйся к нам в социальных сетях',
       },
       en: {
         signIn: 'Sign in',
         help: 'Write to the support service',
         question: 'Did not find the answer?',
+        address: 'Address',
+        addressDetail: '59-69 Pearcedale Parade Broadmeadows VIC 3047',
+        main: 'Main',
+        study: 'Study',
+        team: 'Team',
+        socialNetworks: 'Join us on social networks',
       }
     }
     // new Vue instance
@@ -152,6 +192,12 @@
         courseDescription: textData.en.course.description,
         payHeader: textData.en.pay.header,
         payDescription: textData.en.pay.description,
+        address: pageData.en.address,
+        addressDetail: pageData.en.addressDetail,
+        main: pageData.en.main,
+        study: pageData.en.study,
+        team: pageData.en.team,
+        socialNetworks: pageData.en.socialNetworks,
       },
       methods: {
         // a method for language change
@@ -167,6 +213,12 @@
           this.courseDescription = textData[event.currentTarget.id].course.description;
           this.payHeader = textData[event.currentTarget.id].pay.header;
           this.payDescription = textData[event.currentTarget.id].pay.description;
+          this.address = pageData[event.currentTarget.id].address;
+          this.addressDetail = pageData[event.currentTarget.id].addressDetail;
+          this.main = pageData[event.currentTarget.id].main;
+          this.study = pageData[event.currentTarget.id].study;
+          this.team = pageData[event.currentTarget.id].team;
+          this.socialNetworks = pageData[event.currentTarget.id].socialNetworks;
         },
       }
     });

@@ -35,8 +35,8 @@ footer {
   border: 2px solid #d3d3d3;
   background-color: white;
   gap: 20px;
-  align-items: center;
-  justify-items: center;
+/*   align-items: center; */
+/*   justify-items: center; */
   width: 300px;
   display: grid;
   grid-template-areas: "img" "header" "description";
@@ -51,11 +51,16 @@ footer {
 
 .card__img {
     grid-area: img;
-    height: 55px;
     background-clip: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.card:hover .card__img {
+  border-width: 2px;
+  border-color: gray;
+  cursor: pointer;
 }
 
 .card__img img {
@@ -81,3 +86,5 @@ footer {
 .formBtn {
     font-size: 16px;
 }
+
+

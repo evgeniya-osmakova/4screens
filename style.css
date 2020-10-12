@@ -33,15 +33,6 @@ main{
     position: relative;
 }
 
-footer {
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    text-decoration: none;
-    font-size: 18px;
-}
 
 a {
     text-decoration: none;
